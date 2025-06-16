@@ -1,8 +1,8 @@
 import React from "react";
 import NewTweet from "./NewTweet";
 import TweetsList from "./TweetsList";
-import { KZ_IMG_PATH, NFACTORIAL_IMG_PATH, PROFILE_IMG_PATH} from './images';
-
+import { KZ_IMG_PATH, NFACTORIAL_IMG_PATH} from './images';
+import AVATARKA from './images/AVATARKA.jpeg'
 class Home extends React.Component {
     constructor(){
         super();
@@ -28,8 +28,8 @@ class Home extends React.Component {
                     authorUsername: '@nfactorial',
                     img: NFACTORIAL_IMG_PATH,
                     content: 'Data analytics course starts today!',
-                    replies: 10000000,
-                    retweets: 1000000,
+                    replies: 1000,
+                    retweets: 10,
                     likes: 500,
                     topic: 'education'
                 },
@@ -39,9 +39,9 @@ class Home extends React.Component {
                     authorUsername: '@nfactorial',
                     img: NFACTORIAL_IMG_PATH,
                     content: 'Black friday! Успей купить курсы сегодня!',
-                    replies: 10000000,
-                    retweets: 1000000,
-                    likes: 500,
+                    replies: 300,
+                    retweets: 400,
+                    likes: 700,
                     topic: 'education'
                 },
             ],
@@ -92,9 +92,9 @@ class Home extends React.Component {
     addToTweets = () => {
         const newTweet = {
             id: this.state.tweets.length,
-            authorName: 'Aruzhan',
-            authorUsername: '@azhaubassar',
-            img: PROFILE_IMG_PATH,
+            authorName: 'Dastan',
+            authorUsername: '@bqqak',
+            img: AVATARKA,
             content: this.state.content,
             replies: 0,
             retweets: 0,
@@ -109,7 +109,7 @@ class Home extends React.Component {
     }
 
     deleteTweet = (id) => {
-        // id = 0
+       
         this.setState({
             tweets: this.state.tweets.filter(item=>item.id!==id)
         })
@@ -129,11 +129,7 @@ class Home extends React.Component {
             <div className="w-50 mt-3">
                 <h5 className="mx-3">Home</h5>
                 <NewTweet content={content} onChangeTextInput={this.onChangeTextInput} onTweet={this.addToTweets}/>
-                {/* <div>
-                    <button onClick={()=>this.filterTweetsByTopic('politics')}>{`Politics ${this.state.count}`}</button>
-                    <button onClick={()=>this.filterTweetsByTopic('education')}>Education</button>
-                    <button onClick={()=>this.filterTweetsByTopic('blabla')}>Blabla</button>
-                </div> */}
+            
                 <TweetsList tweets={tweets} deleteTweet={this.deleteTweet}/>
             </div>
         )
